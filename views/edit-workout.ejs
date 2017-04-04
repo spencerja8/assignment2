@@ -1,0 +1,38 @@
+<% include partials/header.ejs %>
+
+<h1>Edit Workout</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name</label>
+        <input type="text" name="name" id="name" required value="<%= workout.name %>">
+    </div>
+
+    <div class="form-group">
+        <label for="muscleWorked" class="col-sm-2 control-label">Muscle Worked</label>
+        <input type="text" name="muscleWorked" id="muscleWorked" required value="<%= workout.muscleWorked %>">
+    </div>
+    <div class="form-group">
+        <label for="weight" class="col-sm-2 control-label" >Weight (lbs)</label>
+        <select name="weight" id="weight">
+            <%
+            for(var i=0;i <501; i++){ %>
+            <option><%= i %></option>
+            <%}%>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="dayWorked" class="col-sm-2 control-label">Day Worked</label>
+        <select name="dayWorked" id="dayWorked">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+        </select>
+    </div>
+    <button class="btn btn-success col-sm-offset-2">Save</button>
+</form>
+
+<% include partials/footer.ejs %>

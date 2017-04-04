@@ -8,25 +8,39 @@ var bodyParser = require('body-parser');
 //bring in our configuration file
 var config = require('./config/config');
 
-//mongoose package
+//include the mongoose package
 var mongoose = require('mongoose');
 
 //connect to mongod
 mongoose.connect(config.mongodb);
 
+//session handling library
+var session = require('express-session');
+//passport for authentication
+var passport = require('passport');
+//the type of authentication
+var localStrategy = require('passport-local').Strategy;
+//flash helps us send messges between pages
+var flash = require('connect-flash');
 
+
+
+//our handler for all authentication
+var auth = require('./routes/auth');
 
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var workouts = require ('./routes/workouts');
-var register = require ('./routes/register');
+var workouts = require('./routes/workouts');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//add flash for express
+app.use(flash());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,10 +50,34 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//enable session support
+app.use(session({
+  secret: config.session_secret,
+  //refresh the user session every time they visit a page
+  resave: true,
+  //only use session if a person is logged in
+  saveUninitialized: false
+}));
+
+//passport
+app.use(passport.initialize());
+//helps by setting up the user details for authentication into the session
+app.use(passport.session());
+
+//link to the model were using
+var Account = require('./models/account');
+//tell passort which model to use
+passport.use(Account.createStrategy());
+
+//these tell passport how/where to get the user information from each page
+passport.serializeUser(Account.serializeUser())
+passport.deserializeUser(Account.deserializeUser())
+
+
+app.use('/auth', auth);
 app.use('/', index);
 app.use('/users', users);
 app.use('/workouts', workouts);
-app.use('/register', register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

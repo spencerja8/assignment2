@@ -1,4 +1,135 @@
 <% include partials/header.ejs %>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<h1>Workout List</h1>
+<a href="/workouts/add">Add Workout</a>
+<table class="table table-striped">
+
+    <h2>Monday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Monday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+    <h2>Tuesday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Tuesday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+    <h2>Wednesday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Wednesday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+    <h2>Thursday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Thursday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+    <h2>Friday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Friday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+    <h2>Saturday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Saturday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+    <h2>Sunday</h2>
+    <% workouts.forEach(function(workout){ if(workout.dayWorked == "Sunday"){%>
+    <tr>
+        <th>Name</th>
+        <th>Muscle Worked</th>
+        <th>Weight</th>
+        <th>Day Worked</th>
+    </tr>
+
+    <tr>
+        <td><%= workout.name %></td>
+        <td><%= workout.muscleWorked %></td>
+        <td><%= workout.weight %></td>
+        <td><%= workout.dayWorked %></td>
+        <td><a href="/workouts/<%= workout._id %>">Edit</a></td>
+        <td><a class="confirmation" href="/workouts/delete/<%= workout._id %>">Delete</a></td>
+    </tr>
+    <% }}) %>
+
+
+</table>
 <% include partials/footer.ejs %>
