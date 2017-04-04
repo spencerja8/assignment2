@@ -5,8 +5,22 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//bring in our configuration file
+var config = require('./config/config');
+
+//mongoose package
+var mongoose = require('mongoose');
+
+//connect to mongod
+mongoose.connect(config.mongodb);
+
+
+
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+var workouts = require ('./routes/workouts');
+var register = require ('./routes/register');
 
 var app = express();
 
@@ -24,6 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/workouts', workouts);
+app.use('/register', register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
